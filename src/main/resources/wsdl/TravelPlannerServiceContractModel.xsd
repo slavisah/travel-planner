@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:data="http://www.pluservice.net/travelplannerservice/data" xmlns:ns1="http://www.pluservice.net/travelplannerservice" targetNamespace="http://www.pluservice.net/travelplannerservice" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.pluservice.net/travelplannerservice/data" schemaLocation="TravelPlannerServiceDomainModel.xsd"/>
+	<xs:element name="DoEcho">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="xs:int" nillable="true" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DoEchoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:int" nillable="true" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetStopListFromLocation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetStopListFromLocationRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetStopListFromLocationResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetStopListFromLocationResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetStopListFromName">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetStopListFromNameRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetStopListFromNameResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetStopListFromNameResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetBusStopSchedule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetBusStopScheduleRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetBusStopScheduleResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetBusStopScheduleResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetJourneyRunTime">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetJourneyRunTimeRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetJourneyRunTimeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetJourneyRunTimeResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTPSolutions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetTPSolutionsRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTPSolutionsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetTPSolutionsResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTPSolutionDetail">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetTPSolutionDetailRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTPSolutionDetailResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetTPSolutionDetailResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTPSolutionGeometry">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="request" type="data:GetTPSolutionGeometryRequestStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetTPSolutionGeometryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="data:GetTPSolutionGeometryResponseStructure" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

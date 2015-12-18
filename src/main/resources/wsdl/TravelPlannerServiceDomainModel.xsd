@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.pluservice.net/travelplannerservice/data" targetNamespace="http://www.pluservice.net/travelplannerservice/data" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="ArrayOfBaseLeg">
+		<xs:sequence>
+			<xs:element name="Leg" type="tns:BaseLegStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfBusStopSchedule">
+		<xs:sequence>
+			<xs:element name="BusStopSchedule" type="tns:BusStopScheduleStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfDetailedLeg">
+		<xs:sequence>
+			<xs:element name="Leg" type="tns:DetailedLegStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfDistancedStopPoint">
+		<xs:sequence>
+			<xs:element name="StopPoint" type="tns:DistancedStopPointStructure" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Point for boarding or alighting of passengers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfGeoLeg">
+		<xs:sequence>
+			<xs:element name="Leg" type="tns:GeoLegStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfJourneyRunTime">
+		<xs:sequence>
+			<xs:element name="RunTime" type="tns:JourneyRunTimeStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfLocation">
+		<xs:sequence>
+			<xs:element name="Location" type="tns:LocationStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfSimpleLeg">
+		<xs:sequence>
+			<xs:element name="Leg" type="tns:SimpleLegStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfSolutionSortCriteria">
+		<xs:sequence>
+			<xs:element name="Criteria" type="tns:SolutionSortCriteriaStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfStopPoint">
+		<xs:sequence>
+			<xs:element name="StopPoint" type="tns:StopPointStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfTPSolution">
+		<xs:sequence>
+			<xs:element name="Solution" type="tns:TPSolutionStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfTransportModeSelection">
+		<xs:sequence>
+			<xs:element name="TransportMode" type="tns:TransportModeSelectionStructure" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseLegStructure">
+		<xs:sequence>
+			<xs:element name="LegDescription" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the leg (e.g. "Walk to stop X" or "Take bus  Y")</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TravelMode" type="tns:TravelModeEnum">
+				<xs:annotation>
+					<xs:documentation>Specifies the type of the leg (WALKING, PUBLIC TRANSPORT, Etc..)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseRequestStructure">
+		<xs:sequence>
+			<xs:element name="LocatingSystem" type="tns:LocatingSystemEnum" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the EPSG value for the coordinates, default is "EPSG_4326"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceTrackInformation" type="tns:DeviceTrackInformationStructure" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Contains information about the calling device for tracking purposes</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Culture" type="tns:CultureEnum" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specification of the culture, based on RFC 4646. Data in the response should be provided according with specified culture. When no culture is specified is intended to use United Kingdom ("en-GB") as default.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseResponseStructure">
+		<xs:sequence>
+			<xs:element name="LocatingSystem" type="tns:LocatingSystemEnum" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the EPSG value for the coordinates, default is "EPSG_4326"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResultInformation" type="tns:ResponseResultStructure" nillable="true" minOccurs="0"/>
+			<xs:element name="Culture" type="tns:CultureEnum" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Culture used in response's data</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseTPSolutionStructure">
+		<xs:sequence>
+			<xs:element name="SolutionId" type="xs:string" nillable="false">
+				<xs:annotation>
+					<xs:documentation>Id of the solution. used as input reference to retrieve further detail of a specific solution (e.g. the detailed geometry for visualization purposes).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalMeters" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total length of the solution expressed in meters</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OnBoardMeters" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total length of the all public transport's legs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WalkingMeters" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total length of the all walking legs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalMinutes" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total duration of the solution</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OnBoardMinutes" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total duration of the all public transport's legs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WalkingMinutes" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total duration of the all walking legs</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DepartureInfo" type="tns:PointStructure" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Details of the exact point of departure</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DepartureTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Departure time of the first leg</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ArrivalInfo" type="tns:PointStructure" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Details of the exact point of arrival</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ArrivalTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Arrival time of the last leg</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BoundingBoxStructure">
+		<xs:sequence>
+			<xs:element name="NorthEast" type="tns:LocationStructure"/>
+			<xs:element name="SouthWest" type="tns:LocationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BusStopScheduleStructure">
+		<xs:sequence>
+			<xs:element name="StopCode" type="tns:PrivateCodeStructure">
+				<xs:annotation>
+					<xs:documentation>Code of the reference stop point</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Journey" type="tns:JourneyStructure">
+				<xs:annotation>
+					<xs:documentation>Passing journey</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PassingTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Passing time of the journey</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DetailedLegStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseLegStructure">
+				<xs:sequence>
+					<xs:element name="DepartureTime" type="xs:dateTime" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Departure time of the leg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DepartureStop" type="tns:StopPointStructure" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specification of departure stop for a leg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ArrivalTime" type="xs:dateTime" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Arrival time of the leg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ArrivalStop" type="tns:StopPointStructure" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specification of arrival stop for a leg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LegMeters" type="xs:positiveInteger" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Length of the leg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LegMinutes" type="xs:positiveInteger" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Duration of the leg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Journey" type="tns:JourneyInLegStructure" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specification of the journey if the leg type is "PublicTransport"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeviceTrackInformationStructure">
+		<xs:sequence>
+			<xs:element name="DevicePosition" type="tns:LocationStructure" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Position of the calling device</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceId" type="xs:string" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Identifier of the calling device</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DistancedStopPointStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:StopPointStructure">
+				<xs:sequence>
+					<xs:element name="DistanceMeters" type="xs:positiveInteger" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Distance from a specific requested point</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GeoLegStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseLegStructure">
+				<xs:sequence>
+					<xs:element name="Geometry" type="tns:ArrayOfLocation"/>
+					<xs:element name="Color" type="xs:int" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional indication for the color of the polyline in RGB integer</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetBusStopScheduleRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="StopCode" type="tns:PrivateCodeStructure">
+						<xs:annotation>
+							<xs:documentation>Reference of the stop from which extract the journeys' schedule</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ReferenceDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>Operating day from which schedule must be extracted</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FromTime" type="xs:dateTime" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional parameter to exclude  journeys which pass before the specified value</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ToTime" type="xs:dateTime" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional parameter to exclude  journeys which pass after the specified value</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetBusStopScheduleResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:ArrayOfBusStopSchedule">
+						<xs:annotation>
+							<xs:documentation>Bus stop schedule items</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetJourneyRunTimeRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="ReferenceDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>Operating day from which journey run times must be extracted</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ReferenceJourney" type="tns:PrivateCodeStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetJourneyRunTimeResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:ArrayOfJourneyRunTime">
+						<xs:annotation>
+							<xs:documentation>Run times sequence</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetStopListFromLocationRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="Point" type="tns:LocationStructure" nillable="true"/>
+					<xs:element name="MaxDistanceMeters" type="xs:positiveInteger" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Maximum distance from Point</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetStopListFromLocationResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:ArrayOfDistancedStopPoint" nillable="true">
+						<xs:annotation>
+							<xs:documentation>List of found stop points inside the requested distance</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetStopListFromNameRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Name to search in any code or description of the stop point</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Municipality" type="xs:string" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Additional filter on the stop’s municipality</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetStopListFromNameResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Items" type="tns:ArrayOfStopPoint">
+						<xs:annotation>
+							<xs:documentation>List of found stop points</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetTPSolutionDetailRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="SolutionId" type="xs:string" nillable="false">
+						<xs:annotation>
+							<xs:documentation>Reference of a specific solution whose details must be retrieved</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetTPSolutionDetailResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Solution" type="tns:TPDetailedSolutionStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetTPSolutionGeometryRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="SolutionId" type="xs:string" nillable="false">
+						<xs:annotation>
+							<xs:documentation>Reference of a specific solution whose details must be retrieved</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetTPSolutionGeometryResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Solution" type="tns:TPGeoSolutionStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetTPSolutionsRequestStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseRequestStructure">
+				<xs:sequence>
+					<xs:element name="ReferenceDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>Operating day from which solution must be calculated</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OriginPoint" type="tns:PointStructure"/>
+					<xs:element name="DestinationPoint" type="tns:PointStructure"/>
+					<xs:element name="MinDepartureTime" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional parameter to retrieve only the solutions departing at a time greater or equal the specified value</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MaxArrivalTime" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional parameter to retrieve only the solutions arriving at a time smaller or equal the specified value</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Transport" type="tns:ArrayOfTransportModeSelection" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Optional parameter to use only a subset of the possible transport modes. If no indications are supplied, no filter for the transport mode is applied. Specifying only exclusions it will apply to the complete set of possible transport modes (e.g. All except "TRAIN")</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SortCriterias" type="tns:ArrayOfSolutionSortCriteria" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the sorting  criterias to apply for the retrieved solutions. if not specified will be applied default sorting criteria  (departure time ascending)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MaxSolutions" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies the maximum number of solutions to retrieve according with specified sorting criterias</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CalcCriteria" type="tns:SolutionCalcCriteriaEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>If specified contains the main cost factor which solution calculation engine should consider</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetTPSolutionsResponseStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseResponseStructure">
+				<xs:sequence>
+					<xs:element name="Solutions" type="tns:ArrayOfTPSolution"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JourneyInLegStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:JourneyStructure">
+				<xs:sequence>
+					<xs:element name="RunTimes" type="tns:ArrayOfJourneyRunTime"/>
+					<xs:element name="InvolvedPart" type="tns:JourneyPartStructure" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>As a leg could use only a portion of the Journey, here are specified the first and last journey run times which delimit the involved part of the journey. If this element is not specified it is assumed the whole journey is involved</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JourneyPartStructure">
+		<xs:sequence>
+			<xs:element name="FromRunTimePointOrder" type="xs:positiveInteger"/>
+			<xs:element name="ToRunTimePointOrder" type="xs:positiveInteger"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JourneyPatternStructure">
+		<xs:sequence>
+			<xs:element name="PrivateCode" type="tns:PrivateCodeStructure">
+				<xs:annotation>
+					<xs:documentation>Private code section</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PublicCode" type="xs:NMTOKEN" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Public code of the journey (e.g. the train or flight number)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InfomobCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Journey code for infomobiliy services</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JourneyPatternDescription" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="HeadSign" type="xs:string" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the Journey pattern's destination</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line" type="tns:LineStructure"/>
+			<xs:element name="Direction" type="tns:DirectionEnum"/>
+			<xs:element name="DepartureStop" type="tns:StopPointStructure">
+				<xs:annotation>
+					<xs:documentation>Stop point wich journey departs from</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ArrivalStop" type="tns:StopPointStructure">
+				<xs:annotation>
+					<xs:documentation>Stop point wich journey arrives to</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Length" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Length of the JourneyPattern in Meters</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JourneyRunTimeStructure">
+		<xs:sequence>
+			<xs:element name="PointOrder" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Specifies the point order in the run time's sequence</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StopPoint" type="tns:StopPointStructure"/>
+			<xs:element name="UseOfStopPoint" type="tns:UseOfStopPointStructure">
+				<xs:annotation>
+					<xs:documentation>Specifies the use of the stop point</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ArrivalTime" type="xs:dateTime" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Specifies the arrival time of the journey in the stop. For the first stop the value can be NULL</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DepartureTime" type="xs:dateTime" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Specifies the departure time of the journey in the stop. For the last stop the value can be NULL</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JourneyStructure">
+		<xs:sequence>
+			<xs:element name="PrivateCode" type="tns:PrivateCodeStructure"/>
+			<xs:element name="PublicCode" type="xs:NMTOKEN" nillable="true" minOccurs="0"/>
+			<xs:element name="JourneyPattern" type="tns:JourneyPatternStructure"/>
+			<xs:element name="DepartureTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Departure time of the journey</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ArrivalTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Arrival time of the journey</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LineStructure">
+		<xs:sequence>
+			<xs:element name="PrivateCode" type="tns:PrivateCodeStructure">
+				<xs:annotation>
+					<xs:documentation>Private code section</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Operator" type="tns:OperatorStructure">
+				<xs:annotation>
+					<xs:documentation>Transport operator's reference</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PublicCode" type="xs:NMTOKEN" nillable="true" minOccurs="0"/>
+			<xs:element name="RegionalCode" type="xs:NMTOKEN" minOccurs="0"/>
+			<xs:element name="LineName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Line code e.g.: "2", "A", "4/"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LineDescription" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the line</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TransportMode" type="tns:TransportModeEnum"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationStructure">
+		<xs:sequence>
+			<xs:element name="LocatingSystem" type="tns:LocatingSystemEnum" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specifies the EPSG value for the coordinates</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CoordinateX" type="xs:float" nillable="true"/>
+			<xs:element name="CoordinateY" type="xs:float" nillable="true"/>
+			<xs:element name="CoordinateZ" type="xs:float" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OperatorStructure">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Unique idenitifer of transport operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Displayed name of the operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WebsiteUrl" type="xs:anyURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>URL of the Operator web site</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Email" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Email address of the operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FareUrl" type="xs:anyURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>URL of a web page for online fare informations or ticket purchasing</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LogoUrl" type="xs:anyURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>URL to operator's logo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PointStructure">
+		<xs:sequence>
+			<xs:element name="Location" type="tns:LocationStructure">
+				<xs:annotation>
+					<xs:documentation>Location of the point</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Municipality" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="Address" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PrivateCodeStructure">
+		<xs:sequence>
+			<xs:element name="OperatorCode" type="xs:NMTOKEN" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Transport operator's reference.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PrivateCode" type="xs:NMTOKEN" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Private code that uniquely identifies the object for the operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseResultStructure">
+		<xs:sequence>
+			<xs:element name="ResultType" type="tns:ResponseResultTypeEnum" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Type of the Result (Ok, Error)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResultCode" type="xs:NMTOKEN" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Code of the result message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResultMessage" type="xs:string" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Contains a message about the result (e.g. A validation error on input parameters)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SimpleLegStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseLegStructure">
+				<xs:sequence>
+					<xs:element name="Line" type="tns:LineStructure" nillable="true" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SolutionSortCriteriaStructure">
+		<xs:sequence>
+			<xs:element name="Criteria" type="tns:SolutionSortCriteriaEnum">
+				<xs:annotation>
+					<xs:documentation>Sorting criteria</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Order" type="xs:positiveInteger">
+				<xs:annotation>
+					<xs:documentation>Order of appliance for the specified criteria</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Descending" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Specifies if descending sorting has to be performed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StopPointStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:PointStructure">
+				<xs:sequence>
+					<xs:element name="PrivateCode" type="tns:PrivateCodeStructure" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Private code section</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PublicCode" type="xs:NMTOKEN" nillable="true" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Public code of the stop point</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TPDetailedSolutionStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseTPSolutionStructure">
+				<xs:sequence>
+					<xs:element name="Legs" type="tns:ArrayOfDetailedLeg"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TPGeoSolutionStructure">
+		<xs:sequence>
+			<xs:element name="SolutionId" type="xs:string" nillable="false"/>
+			<xs:element name="Bounds" type="tns:BoundingBoxStructure"/>
+			<xs:element name="Stops" type="tns:ArrayOfStopPoint">
+				<xs:annotation>
+					<xs:documentation>List of the involved stops, where user boards or alights</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Legs" type="tns:ArrayOfGeoLeg"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TPSolutionStructure">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseTPSolutionStructure">
+				<xs:sequence>
+					<xs:element name="Legs" type="tns:ArrayOfSimpleLeg"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TransportModeSelectionStructure">
+		<xs:sequence>
+			<xs:element name="TransportMode" type="tns:TransportModeEnum"/>
+			<xs:element name="Selected" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UseOfStopPointStructure">
+		<xs:sequence>
+			<xs:element name="ForBoarding" type="xs:boolean"/>
+			<xs:element name="ForAlighting" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="DirectionEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="outBound"/>
+			<xs:enumeration value="inBound"/>
+			<xs:enumeration value="circular"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LocatingSystemEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="EPSG_32632">
+				<xs:annotation>
+					<xs:documentation>WGS84 UTM Zone 32 N</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EPSG_4326">
+				<xs:annotation>
+					<xs:documentation>WGS84 Geo Decimal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ResponseResultTypeEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="ok"/>
+			<xs:enumeration value="error"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SolutionCalcCriteriaEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Fastest"/>
+			<xs:enumeration value="FewTransfers"/>
+			<xs:enumeration value="ShortWalks"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SolutionSortCriteriaEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="departureTime"/>
+			<xs:enumeration value="arrivalTime"/>
+			<xs:enumeration value="totalWalkingDistance"/>
+			<xs:enumeration value="totalWaitingTime"/>
+			<xs:enumeration value="numberOfConnections"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TransportModeEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="bus"/>
+			<xs:enumeration value="tram"/>
+			<xs:enumeration value="lightRail"/>
+			<xs:enumeration value="subway"/>
+			<xs:enumeration value="rail"/>
+			<xs:enumeration value="ferry"/>
+			<xs:enumeration value="funicular"/>
+			<xs:enumeration value="air"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TravelModeEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Walk"/>
+			<xs:enumeration value="PublicTransport"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CultureEnum">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="it-IT"/>
+			<xs:enumeration value="sl-SI"/>
+			<xs:enumeration value="hr-HR"/>
+			<xs:enumeration value="hr-BA"/>
+			<xs:enumeration value="bs-Latn-BA"/>
+			<xs:enumeration value="sr-Latn-BA"/>
+			<xs:enumeration value="sr-Cyrl-BA"/>
+			<xs:enumeration value="bs-Cyrl-BA"/>
+			<xs:enumeration value="el-GR"/>
+			<xs:enumeration value="en-GB"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

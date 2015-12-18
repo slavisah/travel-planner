@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+							xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+							xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+							xmlns:xs="http://www.w3.org/2001/XMLSchema"
+							xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+							xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+							xmlns:tns="http://www.pluservice.net/travelplannerservice"
+							xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+							xmlns:msg="http://www.pluservice.net/travelplannerservice/messages"
+							xmlns:ns="http://www.pluservice.net/travelplannerservice/data"
+							xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+							xmlns:data="http://www.pluservice.net/travelplannerservice/data"
+							targetNamespace="http://www.pluservice.net/travelplannerservice" >
+	
+	<wsdl:types>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://www.pluservice.net/travelplannerservice">
+			<xs:import schemaLocation="TravelPlannerServiceDomainModel.xsd" namespace="http://www.pluservice.net/travelplannerservice/data" />
+		</xs:schema>
+		<xs:schema elementFormDefault="qualified">
+			<xs:import schemaLocation="TravelPlannerServiceContractModel.xsd" namespace="http://www.pluservice.net/travelplannerservice" />
+		</xs:schema>		
+	</wsdl:types>
+	<wsdl:message name="DoEchoRequestMessage">
+		<wsdl:part name="parameters" element="tns:DoEcho"/>
+	</wsdl:message>
+	<wsdl:message name="DoEchoResponseMessage">
+		<wsdl:part name="parameters" element="tns:DoEchoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetStopListFromLocationRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetStopListFromLocation"/>
+	</wsdl:message>
+	<wsdl:message name="GetStopListFromLocationResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetStopListFromLocationResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetStopListFromNameRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetStopListFromName"/>
+	</wsdl:message>
+	<wsdl:message name="GetStopListFromNameResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetStopListFromNameResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="GetBusStopScheduleRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetBusStopSchedule"/>
+	</wsdl:message>
+	<wsdl:message name="GetBusStopScheduleResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetBusStopScheduleResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="GetJourneyRunTimeRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetJourneyRunTime"/>
+	</wsdl:message>
+	<wsdl:message name="GetJourneyRunTimeResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetJourneyRunTimeResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetTPSolutionsRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetTPSolutions"/>
+	</wsdl:message>
+	<wsdl:message name="GetTPSolutionsResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetTPSolutionsResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="GetTPSolutionDetailRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetTPSolutionDetail"/>
+	</wsdl:message>
+	<wsdl:message name="GetTPSolutionDetailResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetTPSolutionDetailResponse"/>
+	</wsdl:message>	
+	<wsdl:message name="GetTPSolutionGeometryRequestMessage">
+		<wsdl:part name="parameters" element="tns:GetTPSolutionGeometry"/>
+	</wsdl:message>
+	<wsdl:message name="GetTPSolutionGeometryResponseMessage">
+		<wsdl:part name="parameters" element="tns:GetTPSolutionGeometryResponse"/>
+	</wsdl:message>			
+	<wsdl:portType name="ITravelPlannerService">
+		<wsdl:operation name="DoEcho">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/DoEcho" message="tns:DoEchoRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/DoEchoResponse" message="tns:DoEchoResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetStopListFromLocation">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetStopListFromLocation" message="tns:GetStopListFromLocationRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetStopListFromLocationResponse" message="tns:GetStopListFromLocationResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetStopListFromName">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetStopListFromName" message="tns:GetStopListFromNameRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetStopListFromNameResponse" message="tns:GetStopListFromNameResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetBusStopSchedule">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetBusStopSchedule" message="tns:GetBusStopScheduleRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetBusStopScheduleResponse" message="tns:GetBusStopScheduleResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetJourneyRunTime">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetJourneyRunTime" message="tns:GetJourneyRunTimeRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetJourneyRunTimeResponse" message="tns:GetJourneyRunTimeResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetTPSolutions">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutions" message="tns:GetTPSolutionsRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionsResponse" message="tns:GetTPSolutionsResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetTPSolutionDetail">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionDetail" message="tns:GetTPSolutionDetailRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionDetailResponse" message="tns:GetTPSolutionDetailResponseMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetTPSolutionGeometry">
+			<wsdl:input wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionGeometry" message="tns:GetTPSolutionGeometryRequestMessage"/>
+			<wsdl:output wsaw:Action="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionGeometryResponse" message="tns:GetTPSolutionGeometryResponseMessage"/>
+		</wsdl:operation>				
+	</wsdl:portType>
+	<wsdl:binding name="TravelPlannerServiceHttpBinding" type="tns:ITravelPlannerService">
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="DoEcho">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/DoEcho" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetStopListFromLocation">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetStopListFromLocation" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetStopListFromName">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetStopListFromName" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBusStopSchedule">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetBusStopSchedule" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetJourneyRunTime">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetJourneyRunTime" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetTPSolutions">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutions" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetTPSolutionDetail">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionDetail" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetTPSolutionGeometry">
+			<soap12:operation soapAction="http://www.pluservice.net/travelplannerservice/ITravelPlannerService/GetTPSolutionGeometry" style="document" soapActionRequired="true"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>			
+	</wsdl:binding>
+	<wsdl:service name="TravelPlannerService">
+		<wsdl:port name="TravelPlannerServicePort" binding="tns:TravelPlannerServiceHttpBinding">
+			<soap12:address location="http://localhost/TravelPlannerService/TravelPlannerService.svc"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
+	
