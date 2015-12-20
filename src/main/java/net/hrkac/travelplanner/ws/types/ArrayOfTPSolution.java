@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfTPSolution", propOrder = {
-    "solution"
+    "solutions"
 })
 public class ArrayOfTPSolution {
 
     @XmlElement(name = "Solution", nillable = true)
-    protected List<TPSolutionStructure> solution;
+    protected List<TPSolutionStructure> solutions;
 
     /**
-     * Gets the value of the solution property.
+     * Gets the value of the solutions property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the solution property.
+     * This is why there is not a <CODE>set</CODE> method for the solutions property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSolution().add(newItem);
+     *    getSolutions().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfTPSolution {
      * 
      * 
      */
-    public List<TPSolutionStructure> getSolution() {
-        if (solution == null) {
-            solution = new ArrayList<TPSolutionStructure>();
+    public List<TPSolutionStructure> getSolutions() {
+        if (solutions == null) {
+            solutions = new ArrayList<TPSolutionStructure>();
         }
-        return this.solution;
+        return this.solutions;
     }
 
 }

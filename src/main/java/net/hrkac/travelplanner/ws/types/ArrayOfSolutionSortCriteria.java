@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfSolutionSortCriteria", propOrder = {
-    "criteria"
+    "criterias"
 })
 public class ArrayOfSolutionSortCriteria {
 
     @XmlElement(name = "Criteria", nillable = true)
-    protected List<SolutionSortCriteriaStructure> criteria;
+    protected List<SolutionSortCriteriaStructure> criterias;
 
     /**
-     * Gets the value of the criteria property.
+     * Gets the value of the criterias property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the criteria property.
+     * This is why there is not a <CODE>set</CODE> method for the criterias property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCriteria().add(newItem);
+     *    getCriterias().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfSolutionSortCriteria {
      * 
      * 
      */
-    public List<SolutionSortCriteriaStructure> getCriteria() {
-        if (criteria == null) {
-            criteria = new ArrayList<SolutionSortCriteriaStructure>();
+    public List<SolutionSortCriteriaStructure> getCriterias() {
+        if (criterias == null) {
+            criterias = new ArrayList<SolutionSortCriteriaStructure>();
         }
-        return this.criteria;
+        return this.criterias;
     }
 
 }

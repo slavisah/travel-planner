@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfLocation", propOrder = {
-    "location"
+    "locations"
 })
 public class ArrayOfLocation {
 
     @XmlElement(name = "Location", nillable = true)
-    protected List<LocationStructure> location;
+    protected List<LocationStructure> locations;
 
     /**
-     * Gets the value of the location property.
+     * Gets the value of the locations property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the location property.
+     * This is why there is not a <CODE>set</CODE> method for the locations property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getLocation().add(newItem);
+     *    getLocations().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfLocation {
      * 
      * 
      */
-    public List<LocationStructure> getLocation() {
-        if (location == null) {
-            location = new ArrayList<LocationStructure>();
+    public List<LocationStructure> getLocations() {
+        if (locations == null) {
+            locations = new ArrayList<LocationStructure>();
         }
-        return this.location;
+        return this.locations;
     }
 
 }

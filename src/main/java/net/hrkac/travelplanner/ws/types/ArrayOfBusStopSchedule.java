@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfBusStopSchedule", propOrder = {
-    "busStopSchedule"
+    "busStopSchedules"
 })
 public class ArrayOfBusStopSchedule {
 
     @XmlElement(name = "BusStopSchedule", nillable = true)
-    protected List<BusStopScheduleStructure> busStopSchedule;
+    protected List<BusStopScheduleStructure> busStopSchedules;
 
     /**
-     * Gets the value of the busStopSchedule property.
+     * Gets the value of the busStopSchedules property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the busStopSchedule property.
+     * This is why there is not a <CODE>set</CODE> method for the busStopSchedules property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getBusStopSchedule().add(newItem);
+     *    getBusStopSchedules().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfBusStopSchedule {
      * 
      * 
      */
-    public List<BusStopScheduleStructure> getBusStopSchedule() {
-        if (busStopSchedule == null) {
-            busStopSchedule = new ArrayList<BusStopScheduleStructure>();
+    public List<BusStopScheduleStructure> getBusStopSchedules() {
+        if (busStopSchedules == null) {
+            busStopSchedules = new ArrayList<BusStopScheduleStructure>();
         }
-        return this.busStopSchedule;
+        return this.busStopSchedules;
     }
 
 }
