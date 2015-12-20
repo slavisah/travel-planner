@@ -2,9 +2,11 @@
 package net.hrkac.travelplanner.ws.types;
 
 import java.util.Date;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -50,14 +52,10 @@ public class GetBusStopScheduleRequestStructure
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date referenceDate;
-    @XmlElement(name = "FromTime", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "dateTime")
-    protected Date fromTime;
-    @XmlElement(name = "ToTime", type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "dateTime")
-    protected Date toTime;
+    @XmlElementRef(name = "FromTime", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<Date> fromTime;
+    @XmlElementRef(name = "ToTime", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<Date> toTime;
 
     /**
      * Gets the value of the stopCode property.
@@ -112,10 +110,10 @@ public class GetBusStopScheduleRequestStructure
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
      *     
      */
-    public Date getFromTime() {
+    public JAXBElement<Date> getFromTime() {
         return fromTime;
     }
 
@@ -124,10 +122,10 @@ public class GetBusStopScheduleRequestStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
      *     
      */
-    public void setFromTime(Date value) {
+    public void setFromTime(JAXBElement<Date> value) {
         this.fromTime = value;
     }
 
@@ -136,10 +134,10 @@ public class GetBusStopScheduleRequestStructure
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
      *     
      */
-    public Date getToTime() {
+    public JAXBElement<Date> getToTime() {
         return toTime;
     }
 
@@ -148,10 +146,10 @@ public class GetBusStopScheduleRequestStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
      *     
      */
-    public void setToTime(Date value) {
+    public void setToTime(JAXBElement<Date> value) {
         this.toTime = value;
     }
 

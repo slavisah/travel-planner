@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfJourneyRunTime", propOrder = {
-    "runTimes"
+    "runTime"
 })
 public class ArrayOfJourneyRunTime {
 
     @XmlElement(name = "RunTime", nillable = true)
-    protected List<JourneyRunTimeStructure> runTimes;
+    protected List<JourneyRunTimeStructure> runTime;
 
     /**
-     * Gets the value of the runTimes property.
+     * Gets the value of the runTime property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the runTimes property.
+     * This is why there is not a <CODE>set</CODE> method for the runTime property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getRunTimes().add(newItem);
+     *    getRunTime().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfJourneyRunTime {
      * 
      * 
      */
-    public List<JourneyRunTimeStructure> getRunTimes() {
-        if (runTimes == null) {
-            runTimes = new ArrayList<JourneyRunTimeStructure>();
+    public List<JourneyRunTimeStructure> getRunTime() {
+        if (runTime == null) {
+            runTime = new ArrayList<JourneyRunTimeStructure>();
         }
-        return this.runTimes;
+        return this.runTime;
     }
 
 }

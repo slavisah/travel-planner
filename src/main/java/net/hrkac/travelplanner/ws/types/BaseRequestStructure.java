@@ -1,10 +1,10 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -47,24 +47,22 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class BaseRequestStructure {
 
-    @XmlElement(name = "LocatingSystem", nillable = true)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected LocatingSystemEnum locatingSystem;
-    @XmlElement(name = "DeviceTrackInformation", nillable = true)
-    protected DeviceTrackInformationStructure deviceTrackInformation;
-    @XmlElement(name = "Culture", nillable = true)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected CultureEnum culture;
+    @XmlElementRef(name = "LocatingSystem", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<LocatingSystemEnum> locatingSystem;
+    @XmlElementRef(name = "DeviceTrackInformation", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<DeviceTrackInformationStructure> deviceTrackInformation;
+    @XmlElementRef(name = "Culture", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<CultureEnum> culture;
 
     /**
      * Gets the value of the locatingSystem property.
      * 
      * @return
      *     possible object is
-     *     {@link LocatingSystemEnum }
+     *     {@link JAXBElement }{@code <}{@link LocatingSystemEnum }{@code >}
      *     
      */
-    public LocatingSystemEnum getLocatingSystem() {
+    public JAXBElement<LocatingSystemEnum> getLocatingSystem() {
         return locatingSystem;
     }
 
@@ -73,10 +71,10 @@ public class BaseRequestStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link LocatingSystemEnum }
+     *     {@link JAXBElement }{@code <}{@link LocatingSystemEnum }{@code >}
      *     
      */
-    public void setLocatingSystem(LocatingSystemEnum value) {
+    public void setLocatingSystem(JAXBElement<LocatingSystemEnum> value) {
         this.locatingSystem = value;
     }
 
@@ -85,10 +83,10 @@ public class BaseRequestStructure {
      * 
      * @return
      *     possible object is
-     *     {@link DeviceTrackInformationStructure }
+     *     {@link JAXBElement }{@code <}{@link DeviceTrackInformationStructure }{@code >}
      *     
      */
-    public DeviceTrackInformationStructure getDeviceTrackInformation() {
+    public JAXBElement<DeviceTrackInformationStructure> getDeviceTrackInformation() {
         return deviceTrackInformation;
     }
 
@@ -97,10 +95,10 @@ public class BaseRequestStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link DeviceTrackInformationStructure }
+     *     {@link JAXBElement }{@code <}{@link DeviceTrackInformationStructure }{@code >}
      *     
      */
-    public void setDeviceTrackInformation(DeviceTrackInformationStructure value) {
+    public void setDeviceTrackInformation(JAXBElement<DeviceTrackInformationStructure> value) {
         this.deviceTrackInformation = value;
     }
 
@@ -109,10 +107,10 @@ public class BaseRequestStructure {
      * 
      * @return
      *     possible object is
-     *     {@link CultureEnum }
+     *     {@link JAXBElement }{@code <}{@link CultureEnum }{@code >}
      *     
      */
-    public CultureEnum getCulture() {
+    public JAXBElement<CultureEnum> getCulture() {
         return culture;
     }
 
@@ -121,10 +119,10 @@ public class BaseRequestStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link CultureEnum }
+     *     {@link JAXBElement }{@code <}{@link CultureEnum }{@code >}
      *     
      */
-    public void setCulture(CultureEnum value) {
+    public void setCulture(JAXBElement<CultureEnum> value) {
         this.culture = value;
     }
 

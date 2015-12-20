@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfTransportModeSelection", propOrder = {
-    "transportModes"
+    "transportMode"
 })
 public class ArrayOfTransportModeSelection {
 
     @XmlElement(name = "TransportMode", nillable = true)
-    protected List<TransportModeSelectionStructure> transportModes;
+    protected List<TransportModeSelectionStructure> transportMode;
 
     /**
-     * Gets the value of the transportModes property.
+     * Gets the value of the transportMode property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the transportModes property.
+     * This is why there is not a <CODE>set</CODE> method for the transportMode property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTransportModes().add(newItem);
+     *    getTransportMode().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfTransportModeSelection {
      * 
      * 
      */
-    public List<TransportModeSelectionStructure> getTransportModes() {
-        if (transportModes == null) {
-            transportModes = new ArrayList<TransportModeSelectionStructure>();
+    public List<TransportModeSelectionStructure> getTransportMode() {
+        if (transportMode == null) {
+            transportMode = new ArrayList<TransportModeSelectionStructure>();
         }
-        return this.transportModes;
+        return this.transportMode;
     }
 
 }

@@ -1,9 +1,11 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -38,8 +40,8 @@ public class GetStopListFromNameRequestStructure
 
     @XmlElement(name = "Name", required = true)
     protected String name;
-    @XmlElement(name = "Municipality", nillable = true)
-    protected String municipality;
+    @XmlElementRef(name = "Municipality", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> municipality;
 
     /**
      * Gets the value of the name property.
@@ -70,10 +72,10 @@ public class GetStopListFromNameRequestStructure
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getMunicipality() {
+    public JAXBElement<String> getMunicipality() {
         return municipality;
     }
 
@@ -82,10 +84,10 @@ public class GetStopListFromNameRequestStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setMunicipality(String value) {
+    public void setMunicipality(JAXBElement<String> value) {
         this.municipality = value;
     }
 

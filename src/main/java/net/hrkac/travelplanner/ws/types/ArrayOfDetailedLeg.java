@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfDetailedLeg", propOrder = {
-    "legs"
+    "leg"
 })
 public class ArrayOfDetailedLeg {
 
     @XmlElement(name = "Leg", nillable = true)
-    protected List<DetailedLegStructure> legs;
+    protected List<DetailedLegStructure> leg;
 
     /**
-     * Gets the value of the legs property.
+     * Gets the value of the leg property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the legs property.
+     * This is why there is not a <CODE>set</CODE> method for the leg property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getLegs().add(newItem);
+     *    getLeg().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfDetailedLeg {
      * 
      * 
      */
-    public List<DetailedLegStructure> getLegs() {
-        if (legs == null) {
-            legs = new ArrayList<DetailedLegStructure>();
+    public List<DetailedLegStructure> getLeg() {
+        if (leg == null) {
+            leg = new ArrayList<DetailedLegStructure>();
         }
-        return this.legs;
+        return this.leg;
     }
 
 }

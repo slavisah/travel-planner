@@ -1,14 +1,12 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -43,22 +41,20 @@ public class StopPointStructure
     extends PointStructure
 {
 
-    @XmlElement(name = "PrivateCode", nillable = true)
-    protected PrivateCodeStructure privateCode;
-    @XmlElement(name = "PublicCode", nillable = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String publicCode;
+    @XmlElementRef(name = "PrivateCode", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<PrivateCodeStructure> privateCode;
+    @XmlElementRef(name = "PublicCode", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> publicCode;
 
     /**
      * Gets the value of the privateCode property.
      * 
      * @return
      *     possible object is
-     *     {@link PrivateCodeStructure }
+     *     {@link JAXBElement }{@code <}{@link PrivateCodeStructure }{@code >}
      *     
      */
-    public PrivateCodeStructure getPrivateCode() {
+    public JAXBElement<PrivateCodeStructure> getPrivateCode() {
         return privateCode;
     }
 
@@ -67,10 +63,10 @@ public class StopPointStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link PrivateCodeStructure }
+     *     {@link JAXBElement }{@code <}{@link PrivateCodeStructure }{@code >}
      *     
      */
-    public void setPrivateCode(PrivateCodeStructure value) {
+    public void setPrivateCode(JAXBElement<PrivateCodeStructure> value) {
         this.privateCode = value;
     }
 
@@ -79,10 +75,10 @@ public class StopPointStructure
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getPublicCode() {
+    public JAXBElement<String> getPublicCode() {
         return publicCode;
     }
 
@@ -91,10 +87,10 @@ public class StopPointStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setPublicCode(String value) {
+    public void setPublicCode(JAXBElement<String> value) {
         this.publicCode = value;
     }
 

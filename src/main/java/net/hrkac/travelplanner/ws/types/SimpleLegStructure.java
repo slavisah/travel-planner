@@ -1,9 +1,10 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -34,18 +35,18 @@ public class SimpleLegStructure
     extends BaseLegStructure
 {
 
-    @XmlElement(name = "Line", nillable = true)
-    protected LineStructure line;
+    @XmlElementRef(name = "Line", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<LineStructure> line;
 
     /**
      * Gets the value of the line property.
      * 
      * @return
      *     possible object is
-     *     {@link LineStructure }
+     *     {@link JAXBElement }{@code <}{@link LineStructure }{@code >}
      *     
      */
-    public LineStructure getLine() {
+    public JAXBElement<LineStructure> getLine() {
         return line;
     }
 
@@ -54,10 +55,10 @@ public class SimpleLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link LineStructure }
+     *     {@link JAXBElement }{@code <}{@link LineStructure }{@code >}
      *     
      */
-    public void setLine(LineStructure value) {
+    public void setLine(JAXBElement<LineStructure> value) {
         this.line = value;
     }
 

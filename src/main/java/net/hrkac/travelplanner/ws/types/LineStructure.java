@@ -1,9 +1,11 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -51,10 +53,8 @@ public class LineStructure {
     protected PrivateCodeStructure privateCode;
     @XmlElement(name = "Operator", required = true)
     protected OperatorStructure operator;
-    @XmlElement(name = "PublicCode", nillable = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String publicCode;
+    @XmlElementRef(name = "PublicCode", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> publicCode;
     @XmlElement(name = "RegionalCode")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NMTOKEN")
@@ -120,10 +120,10 @@ public class LineStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getPublicCode() {
+    public JAXBElement<String> getPublicCode() {
         return publicCode;
     }
 
@@ -132,10 +132,10 @@ public class LineStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setPublicCode(String value) {
+    public void setPublicCode(JAXBElement<String> value) {
         this.publicCode = value;
     }
 

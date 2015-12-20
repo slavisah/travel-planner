@@ -30,26 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArrayOfStopPoint", propOrder = {
-    "stopPoints"
+    "stopPoint"
 })
 public class ArrayOfStopPoint {
 
     @XmlElement(name = "StopPoint", nillable = true)
-    protected List<StopPointStructure> stopPoints;
+    protected List<StopPointStructure> stopPoint;
 
     /**
-     * Gets the value of the stopPoints property.
+     * Gets the value of the stopPoint property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the stopPoints property.
+     * This is why there is not a <CODE>set</CODE> method for the stopPoint property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getStopPoints().add(newItem);
+     *    getStopPoint().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ArrayOfStopPoint {
      * 
      * 
      */
-    public List<StopPointStructure> getStopPoints() {
-        if (stopPoints == null) {
-            stopPoints = new ArrayList<StopPointStructure>();
+    public List<StopPointStructure> getStopPoint() {
+        if (stopPoint == null) {
+            stopPoint = new ArrayList<StopPointStructure>();
         }
-        return this.stopPoints;
+        return this.stopPoint;
     }
 
 }

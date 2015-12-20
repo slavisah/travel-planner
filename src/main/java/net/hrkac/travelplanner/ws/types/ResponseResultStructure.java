@@ -1,13 +1,13 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -42,12 +42,10 @@ public class ResponseResultStructure {
     @XmlElement(name = "ResultType", required = true, nillable = true)
     @XmlSchemaType(name = "NMTOKEN")
     protected ResponseResultTypeEnum resultType;
-    @XmlElement(name = "ResultCode", nillable = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String resultCode;
-    @XmlElement(name = "ResultMessage", nillable = true)
-    protected String resultMessage;
+    @XmlElementRef(name = "ResultCode", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> resultCode;
+    @XmlElementRef(name = "ResultMessage", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> resultMessage;
 
     /**
      * Gets the value of the resultType property.
@@ -78,10 +76,10 @@ public class ResponseResultStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getResultCode() {
+    public JAXBElement<String> getResultCode() {
         return resultCode;
     }
 
@@ -90,10 +88,10 @@ public class ResponseResultStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setResultCode(String value) {
+    public void setResultCode(JAXBElement<String> value) {
         this.resultCode = value;
     }
 
@@ -102,10 +100,10 @@ public class ResponseResultStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getResultMessage() {
+    public JAXBElement<String> getResultMessage() {
         return resultMessage;
     }
 
@@ -114,10 +112,10 @@ public class ResponseResultStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setResultMessage(String value) {
+    public void setResultMessage(JAXBElement<String> value) {
         this.resultMessage = value;
     }
 

@@ -10,6 +10,7 @@ import net.hrkac.travelplanner.ws.types.ArrayOfTPSolution;
 import net.hrkac.travelplanner.ws.types.DistancedStopPointStructure;
 import net.hrkac.travelplanner.ws.types.GetStopListFromLocationResponseStructure;
 import net.hrkac.travelplanner.ws.types.GetTPSolutionsResponseStructure;
+import net.hrkac.travelplanner.ws.types.ObjectFactory;
 import net.hrkac.travelplanner.ws.types.TPSolutionStructure;
 
 import org.joda.time.DateTime;
@@ -29,12 +30,13 @@ public class TravelEndpoint {
     @ResponsePayload
     public GetStopListFromLocationResponse getStopListFromLocation(@RequestPayload GetStopListFromLocation request) {
         LOGGER.debug("Zaprimljen request {}", STOP_LIST_FROM_LOCATION_REQUEST);
+        ObjectFactory objectFactory = new ObjectFactory();
         GetStopListFromLocationResponse response = new GetStopListFromLocationResponse();
         GetStopListFromLocationResponseStructure structure = new GetStopListFromLocationResponseStructure();
         structure.setItems(new ArrayOfDistancedStopPoint());
         DistancedStopPointStructure stopPoint = new DistancedStopPointStructure();
-        stopPoint.setAddress("Nekakva adresa za beću.");
-        structure.getItems().getStopPoints().add(stopPoint);
+        stopPoint.setAddress(objectFactory.createPointStructureAddress("Nekakva adresa za beću."));
+        structure.getItems().getStopPoint().add(stopPoint);
         response.setResponse(structure);
         return response;
     }
@@ -49,7 +51,7 @@ public class TravelEndpoint {
         structure.setDepartureTime(new DateTime().withYear(2015).withMonthOfYear(12).withDayOfMonth(24).withHourOfDay(22).withMinuteOfHour(30).toDate());
         structure.setArrivalTime(new DateTime().withYear(2015).withMonthOfYear(12).withDayOfMonth(25).withHourOfDay(5).withMinuteOfHour(30).toDate());
         responseStructure.setSolutions(new ArrayOfTPSolution());
-        responseStructure.getSolutions().getSolutions().add(structure);
+        responseStructure.getSolutions().getSolution().add(structure);
         response.setResponse(responseStructure);
         return response;
     }

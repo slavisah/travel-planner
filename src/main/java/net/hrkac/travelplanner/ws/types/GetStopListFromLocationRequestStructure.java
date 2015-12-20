@@ -2,10 +2,11 @@
 package net.hrkac.travelplanner.ws.types;
 
 import java.math.BigInteger;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -40,9 +41,8 @@ public class GetStopListFromLocationRequestStructure
 
     @XmlElement(name = "Point", required = true, nillable = true)
     protected LocationStructure point;
-    @XmlElement(name = "MaxDistanceMeters", nillable = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger maxDistanceMeters;
+    @XmlElementRef(name = "MaxDistanceMeters", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<BigInteger> maxDistanceMeters;
 
     /**
      * Gets the value of the point property.
@@ -73,10 +73,10 @@ public class GetStopListFromLocationRequestStructure
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      *     
      */
-    public BigInteger getMaxDistanceMeters() {
+    public JAXBElement<BigInteger> getMaxDistanceMeters() {
         return maxDistanceMeters;
     }
 
@@ -85,10 +85,10 @@ public class GetStopListFromLocationRequestStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      *     
      */
-    public void setMaxDistanceMeters(BigInteger value) {
+    public void setMaxDistanceMeters(JAXBElement<BigInteger> value) {
         this.maxDistanceMeters = value;
     }
 

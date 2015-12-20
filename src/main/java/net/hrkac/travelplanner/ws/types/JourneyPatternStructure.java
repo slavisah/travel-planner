@@ -2,13 +2,13 @@
 package net.hrkac.travelplanner.ws.types;
 
 import java.math.BigInteger;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -56,16 +56,14 @@ public class JourneyPatternStructure {
 
     @XmlElement(name = "PrivateCode", required = true)
     protected PrivateCodeStructure privateCode;
-    @XmlElement(name = "PublicCode", nillable = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String publicCode;
+    @XmlElementRef(name = "PublicCode", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> publicCode;
     @XmlElement(name = "InfomobCode")
     protected String infomobCode;
-    @XmlElement(name = "JourneyPatternDescription", nillable = true)
-    protected String journeyPatternDescription;
-    @XmlElement(name = "HeadSign", nillable = true)
-    protected String headSign;
+    @XmlElementRef(name = "JourneyPatternDescription", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> journeyPatternDescription;
+    @XmlElementRef(name = "HeadSign", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> headSign;
     @XmlElement(name = "Line", required = true)
     protected LineStructure line;
     @XmlElement(name = "Direction", required = true)
@@ -108,10 +106,10 @@ public class JourneyPatternStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getPublicCode() {
+    public JAXBElement<String> getPublicCode() {
         return publicCode;
     }
 
@@ -120,10 +118,10 @@ public class JourneyPatternStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setPublicCode(String value) {
+    public void setPublicCode(JAXBElement<String> value) {
         this.publicCode = value;
     }
 
@@ -156,10 +154,10 @@ public class JourneyPatternStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getJourneyPatternDescription() {
+    public JAXBElement<String> getJourneyPatternDescription() {
         return journeyPatternDescription;
     }
 
@@ -168,10 +166,10 @@ public class JourneyPatternStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setJourneyPatternDescription(String value) {
+    public void setJourneyPatternDescription(JAXBElement<String> value) {
         this.journeyPatternDescription = value;
     }
 
@@ -180,10 +178,10 @@ public class JourneyPatternStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getHeadSign() {
+    public JAXBElement<String> getHeadSign() {
         return headSign;
     }
 
@@ -192,10 +190,10 @@ public class JourneyPatternStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setHeadSign(String value) {
+    public void setHeadSign(JAXBElement<String> value) {
         this.headSign = value;
     }
 

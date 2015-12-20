@@ -1,10 +1,11 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -39,25 +40,24 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class LocationStructure {
 
-    @XmlElement(name = "LocatingSystem", nillable = true)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected LocatingSystemEnum locatingSystem;
+    @XmlElementRef(name = "LocatingSystem", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<LocatingSystemEnum> locatingSystem;
     @XmlElement(name = "CoordinateX", required = true, type = Float.class, nillable = true)
     protected Float coordinateX;
     @XmlElement(name = "CoordinateY", required = true, type = Float.class, nillable = true)
     protected Float coordinateY;
-    @XmlElement(name = "CoordinateZ", nillable = true)
-    protected Float coordinateZ;
+    @XmlElementRef(name = "CoordinateZ", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<Float> coordinateZ;
 
     /**
      * Gets the value of the locatingSystem property.
      * 
      * @return
      *     possible object is
-     *     {@link LocatingSystemEnum }
+     *     {@link JAXBElement }{@code <}{@link LocatingSystemEnum }{@code >}
      *     
      */
-    public LocatingSystemEnum getLocatingSystem() {
+    public JAXBElement<LocatingSystemEnum> getLocatingSystem() {
         return locatingSystem;
     }
 
@@ -66,10 +66,10 @@ public class LocationStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link LocatingSystemEnum }
+     *     {@link JAXBElement }{@code <}{@link LocatingSystemEnum }{@code >}
      *     
      */
-    public void setLocatingSystem(LocatingSystemEnum value) {
+    public void setLocatingSystem(JAXBElement<LocatingSystemEnum> value) {
         this.locatingSystem = value;
     }
 
@@ -126,10 +126,10 @@ public class LocationStructure {
      * 
      * @return
      *     possible object is
-     *     {@link Float }
+     *     {@link JAXBElement }{@code <}{@link Float }{@code >}
      *     
      */
-    public Float getCoordinateZ() {
+    public JAXBElement<Float> getCoordinateZ() {
         return coordinateZ;
     }
 
@@ -138,10 +138,10 @@ public class LocationStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link Float }
+     *     {@link JAXBElement }{@code <}{@link Float }{@code >}
      *     
      */
-    public void setCoordinateZ(Float value) {
+    public void setCoordinateZ(JAXBElement<Float> value) {
         this.coordinateZ = value;
     }
 

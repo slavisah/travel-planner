@@ -1,9 +1,11 @@
 
 package net.hrkac.travelplanner.ws.types;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -44,12 +46,12 @@ public class PointStructure {
 
     @XmlElement(name = "Location", required = true)
     protected LocationStructure location;
-    @XmlElement(name = "Municipality", nillable = true)
-    protected String municipality;
-    @XmlElement(name = "Address", nillable = true)
-    protected String address;
-    @XmlElement(name = "Description", nillable = true)
-    protected String description;
+    @XmlElementRef(name = "Municipality", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> municipality;
+    @XmlElementRef(name = "Address", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> address;
+    @XmlElementRef(name = "Description", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
+    protected JAXBElement<String> description;
 
     /**
      * Gets the value of the location property.
@@ -80,10 +82,10 @@ public class PointStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getMunicipality() {
+    public JAXBElement<String> getMunicipality() {
         return municipality;
     }
 
@@ -92,10 +94,10 @@ public class PointStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setMunicipality(String value) {
+    public void setMunicipality(JAXBElement<String> value) {
         this.municipality = value;
     }
 
@@ -104,10 +106,10 @@ public class PointStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getAddress() {
+    public JAXBElement<String> getAddress() {
         return address;
     }
 
@@ -116,10 +118,10 @@ public class PointStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setAddress(String value) {
+    public void setAddress(JAXBElement<String> value) {
         this.address = value;
     }
 
@@ -128,10 +130,10 @@ public class PointStructure {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getDescription() {
+    public JAXBElement<String> getDescription() {
         return description;
     }
 
@@ -140,10 +142,10 @@ public class PointStructure {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setDescription(String value) {
+    public void setDescription(JAXBElement<String> value) {
         this.description = value;
     }
 
