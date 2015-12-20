@@ -1,11 +1,9 @@
 
 package net.hrkac.travelplanner.ws.types;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -40,8 +38,8 @@ public class GeoLegStructure
 
     @XmlElement(name = "Geometry", required = true)
     protected ArrayOfLocation geometry;
-    @XmlElementRef(name = "Color", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<Integer> color;
+    @XmlElement(name = "Color", nillable = true)
+    protected Integer color;
 
     /**
      * Gets the value of the geometry property.
@@ -72,10 +70,10 @@ public class GeoLegStructure
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     {@link Integer }
      *     
      */
-    public JAXBElement<Integer> getColor() {
+    public Integer getColor() {
         return color;
     }
 
@@ -84,10 +82,10 @@ public class GeoLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     {@link Integer }
      *     
      */
-    public void setColor(JAXBElement<Integer> value) {
+    public void setColor(Integer value) {
         this.color = value;
     }
 

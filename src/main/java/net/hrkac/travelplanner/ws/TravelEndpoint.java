@@ -30,12 +30,11 @@ public class TravelEndpoint {
     @ResponsePayload
     public GetStopListFromLocationResponse getStopListFromLocation(@RequestPayload GetStopListFromLocation request) {
         LOGGER.debug("Zaprimljen request {}", STOP_LIST_FROM_LOCATION_REQUEST);
-        ObjectFactory objectFactory = new ObjectFactory();
         GetStopListFromLocationResponse response = new GetStopListFromLocationResponse();
         GetStopListFromLocationResponseStructure structure = new GetStopListFromLocationResponseStructure();
         structure.setItems(new ArrayOfDistancedStopPoint());
         DistancedStopPointStructure stopPoint = new DistancedStopPointStructure();
-        stopPoint.setAddress(objectFactory.createPointStructureAddress("Nekakva adresa za beću."));
+        stopPoint.setAddress("Nekakva adresa za beću.");
         structure.getItems().getStopPoint().add(stopPoint);
         response.setResponse(structure);
         return response;

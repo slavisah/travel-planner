@@ -3,12 +3,13 @@ package net.hrkac.travelplanner.ws.types;
 
 import java.math.BigInteger;
 import java.util.Date;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import net.hrkac.travelplanner.ws.custom.Adapter1;
 
 
 /**
@@ -50,30 +51,36 @@ public class DetailedLegStructure
     extends BaseLegStructure
 {
 
-    @XmlElementRef(name = "DepartureTime", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<Date> departureTime;
+    @XmlElement(name = "DepartureTime", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Date departureTime;
     @XmlElement(name = "DepartureStop")
     protected StopPointStructure departureStop;
-    @XmlElementRef(name = "ArrivalTime", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<Date> arrivalTime;
-    @XmlElementRef(name = "ArrivalStop", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<StopPointStructure> arrivalStop;
-    @XmlElementRef(name = "LegMeters", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<BigInteger> legMeters;
-    @XmlElementRef(name = "LegMinutes", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<BigInteger> legMinutes;
-    @XmlElementRef(name = "Journey", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<JourneyInLegStructure> journey;
+    @XmlElement(name = "ArrivalTime", type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Date arrivalTime;
+    @XmlElement(name = "ArrivalStop", nillable = true)
+    protected StopPointStructure arrivalStop;
+    @XmlElement(name = "LegMeters", nillable = true)
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger legMeters;
+    @XmlElement(name = "LegMinutes", nillable = true)
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger legMinutes;
+    @XmlElement(name = "Journey", nillable = true)
+    protected JourneyInLegStructure journey;
 
     /**
      * Gets the value of the departureTime property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<Date> getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
@@ -82,10 +89,10 @@ public class DetailedLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
+     *     {@link String }
      *     
      */
-    public void setDepartureTime(JAXBElement<Date> value) {
+    public void setDepartureTime(Date value) {
         this.departureTime = value;
     }
 
@@ -118,10 +125,10 @@ public class DetailedLegStructure
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<Date> getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
@@ -130,10 +137,10 @@ public class DetailedLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Date }{@code >}
+     *     {@link String }
      *     
      */
-    public void setArrivalTime(JAXBElement<Date> value) {
+    public void setArrivalTime(Date value) {
         this.arrivalTime = value;
     }
 
@@ -142,10 +149,10 @@ public class DetailedLegStructure
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link StopPointStructure }{@code >}
+     *     {@link StopPointStructure }
      *     
      */
-    public JAXBElement<StopPointStructure> getArrivalStop() {
+    public StopPointStructure getArrivalStop() {
         return arrivalStop;
     }
 
@@ -154,10 +161,10 @@ public class DetailedLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link StopPointStructure }{@code >}
+     *     {@link StopPointStructure }
      *     
      */
-    public void setArrivalStop(JAXBElement<StopPointStructure> value) {
+    public void setArrivalStop(StopPointStructure value) {
         this.arrivalStop = value;
     }
 
@@ -166,10 +173,10 @@ public class DetailedLegStructure
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     *     {@link BigInteger }
      *     
      */
-    public JAXBElement<BigInteger> getLegMeters() {
+    public BigInteger getLegMeters() {
         return legMeters;
     }
 
@@ -178,10 +185,10 @@ public class DetailedLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     *     {@link BigInteger }
      *     
      */
-    public void setLegMeters(JAXBElement<BigInteger> value) {
+    public void setLegMeters(BigInteger value) {
         this.legMeters = value;
     }
 
@@ -190,10 +197,10 @@ public class DetailedLegStructure
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     *     {@link BigInteger }
      *     
      */
-    public JAXBElement<BigInteger> getLegMinutes() {
+    public BigInteger getLegMinutes() {
         return legMinutes;
     }
 
@@ -202,10 +209,10 @@ public class DetailedLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     *     {@link BigInteger }
      *     
      */
-    public void setLegMinutes(JAXBElement<BigInteger> value) {
+    public void setLegMinutes(BigInteger value) {
         this.legMinutes = value;
     }
 
@@ -214,10 +221,10 @@ public class DetailedLegStructure
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link JourneyInLegStructure }{@code >}
+     *     {@link JourneyInLegStructure }
      *     
      */
-    public JAXBElement<JourneyInLegStructure> getJourney() {
+    public JourneyInLegStructure getJourney() {
         return journey;
     }
 
@@ -226,10 +233,10 @@ public class DetailedLegStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link JourneyInLegStructure }{@code >}
+     *     {@link JourneyInLegStructure }
      *     
      */
-    public void setJourney(JAXBElement<JourneyInLegStructure> value) {
+    public void setJourney(JourneyInLegStructure value) {
         this.journey = value;
     }
 

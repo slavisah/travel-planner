@@ -2,10 +2,10 @@
 package net.hrkac.travelplanner.ws.types;
 
 import java.math.BigInteger;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -36,18 +36,19 @@ public class DistancedStopPointStructure
     extends StopPointStructure
 {
 
-    @XmlElementRef(name = "DistanceMeters", namespace = "http://www.pluservice.net/travelplannerservice/data", type = JAXBElement.class)
-    protected JAXBElement<BigInteger> distanceMeters;
+    @XmlElement(name = "DistanceMeters", nillable = true)
+    @XmlSchemaType(name = "positiveInteger")
+    protected BigInteger distanceMeters;
 
     /**
      * Gets the value of the distanceMeters property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     *     {@link BigInteger }
      *     
      */
-    public JAXBElement<BigInteger> getDistanceMeters() {
+    public BigInteger getDistanceMeters() {
         return distanceMeters;
     }
 
@@ -56,10 +57,10 @@ public class DistancedStopPointStructure
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     *     {@link BigInteger }
      *     
      */
-    public void setDistanceMeters(JAXBElement<BigInteger> value) {
+    public void setDistanceMeters(BigInteger value) {
         this.distanceMeters = value;
     }
 

@@ -1,10 +1,7 @@
 
 package net.hrkac.travelplanner.ws.elements;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -24,8 +21,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _DoEchoRequest_QNAME = new QName("http://www.pluservice.net/travelplannerservice", "request");
-    private final static QName _DoEchoResponseResponse_QNAME = new QName("http://www.pluservice.net/travelplannerservice", "response");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.hrkac.travelplanner.ws.elements
@@ -160,24 +155,6 @@ public class ObjectFactory {
      */
     public GetTPSolutionGeometryResponse createGetTPSolutionGeometryResponse() {
         return new GetTPSolutionGeometryResponse();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pluservice.net/travelplannerservice", name = "request", scope = DoEcho.class)
-    public JAXBElement<Integer> createDoEchoRequest(Integer value) {
-        return new JAXBElement<Integer>(_DoEchoRequest_QNAME, Integer.class, DoEcho.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pluservice.net/travelplannerservice", name = "response", scope = DoEchoResponse.class)
-    public JAXBElement<Integer> createDoEchoResponseResponse(Integer value) {
-        return new JAXBElement<Integer>(_DoEchoResponseResponse_QNAME, Integer.class, DoEchoResponse.class, value);
     }
 
 }

@@ -1,10 +1,9 @@
 
 package net.hrkac.travelplanner.ws.elements;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -35,18 +34,18 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "DoEcho")
 public class DoEcho {
 
-    @XmlElementRef(name = "request", namespace = "http://www.pluservice.net/travelplannerservice", type = JAXBElement.class)
-    protected JAXBElement<Integer> request;
+    @XmlElement(nillable = true)
+    protected Integer request;
 
     /**
      * Gets the value of the request property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     {@link Integer }
      *     
      */
-    public JAXBElement<Integer> getRequest() {
+    public Integer getRequest() {
         return request;
     }
 
@@ -55,10 +54,10 @@ public class DoEcho {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     {@link Integer }
      *     
      */
-    public void setRequest(JAXBElement<Integer> value) {
+    public void setRequest(Integer value) {
         this.request = value;
     }
 
